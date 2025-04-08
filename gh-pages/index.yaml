@@ -3,12 +3,12 @@ entries:
   my-chart:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-04-08T16:13:33.2534746+02:00"
+    created: "2025-04-08T15:28:53.271055798Z"
     description: A Helm chart for Kubernetes
-    digest: 5858c366f85be24969da5e2ce51f907840d2c46a3f367e749ade1ed1d9a73068
+    digest: a3d14adaf2cf5a42faccd38dcc93a90ea02720017311434b00760a306c53d93a
     name: my-chart
     type: application
     urls:
     - https://LeilaZarban.github.io/webapi-helm-charts/my-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-08T16:13:33.2534746+02:00"
+generated: "2025-04-08T15:28:53.270705144Z"
