@@ -1,0 +1,46 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Package and Publish Helm Chart
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+   push:
+    branches:
+      - main   
+    paths:
+      - "charts/**"  # Trigger only when files in the charts directory change
+   pull_request:
+    branches:
+      - main 
+    paths:
+      - "charts/**"  
+   workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  package:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Set up Helm
+      uses: helm/helm-action@v2
+    
+    - name: Package the Helm chart
+      run: |
+        helm package my-chart -d gh-pages   # Adjust the path to your chart
+        helm repo index gh-pages --url https://LeilaZarban.github.io/webapi-helm-charts   # Generate index.yaml for GitHub Pages
+
+    - name: Set up Git
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+
+    - name: Commit and push packaged chart to gh-pages branch
+      run: |
+        git add .
+        git commit -m "Update Helm chart package"
+        git push --force https://github.com/LeilaZarban/webapi-helm-charts.git HEAD:gh-pages   # Push to gh-pages branch
