@@ -43,8 +43,6 @@ jobs:
         git config user.email "actions@github.com"
 
     - name: Commit and push packaged chart to gh-pages branch
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
       run: |
         git add gh-pages/*
         git commit -m "Update Helm chart package"
