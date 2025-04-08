@@ -22,6 +22,8 @@ jobs:
   # This workflow contains a single job called "build"
   package:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -45,4 +47,4 @@ jobs:
       run: |
         git add gh-pages/*
         git commit -m "Update Helm chart package"
-        git push --force https://github.com/LeilaZarban/webapi-helm-charts.git HEAD:gh-pages   # Push to gh-pages branch
+        git push e--forc https://github.com/LeilaZarban/webapi-helm-charts.git HEAD:gh-pages   # Push to gh-pages branch
