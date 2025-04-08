@@ -9,12 +9,12 @@ on:
     branches:
       - main   
     paths:
-      - "charts/**"  # Trigger only when files in the charts directory change
+      - "my-chart/**"  # Trigger only when files in the charts directory change
    pull_request:
     branches:
       - main 
     paths:
-      - "charts/**"  
+      - "my-chart/**"  
    workflow_dispatch:
 permissions:
   contents: write  # Required for pushing to gh-pages
