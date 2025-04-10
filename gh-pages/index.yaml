@@ -9,6 +9,6 @@ entries:
     name: my-chart
     type: application
     urls:
-    - https://LeilaZarban.github.io/webapi-helm-charts/my-chart-0.1.0.tgz
+    - https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/BRANCH_NAME/charts
     version: 0.1.0
 generated: "2025-04-08T17:27:41.597139396Z"
