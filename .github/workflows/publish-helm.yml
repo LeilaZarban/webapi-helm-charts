@@ -9,12 +9,14 @@ on:
     branches:
       - main   
     paths:
-      - "my-chart/**"  # Trigger only when files in the charts directory change
+       - 'charts/**'
+       - '.github/workflows/publish-helm.yaml'
    pull_request:
     branches:
       - main 
     paths:
-      - "my-chart/**"  
+       - 'charts/**'
+       - '.github/workflows/publish-helm.yaml'
    workflow_dispatch:
 permissions:
   contents: write  # Required for pushing to gh-pages
@@ -32,7 +34,7 @@ jobs:
     
     - name: Package the Helm chart
       run: |
-        helm package charts/* -d repo   
+        helm package charts -d repo   
         helm repo index repo --url https://LeilaZarban.github.io/webapi-helm-charts  
 
     - name: Upload charts to Azure Blob Storage
