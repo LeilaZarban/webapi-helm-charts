@@ -32,16 +32,13 @@ jobs:
     
     - name: Package the Helm chart
       run: |
-        helm package my-chart -d gh-pages   # Adjust the path to your chart
-        helm repo index gh-pages --url https://LeilaZarban.github.io/webapi-helm-charts   # Generate index.yaml for GitHub Pages
+        helm package charts/* -d repo   
+        helm repo index repo --url https://LeilaZarban.github.io/webapi-helm-charts  
 
-    - name: Set up Git
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
+    - name: Upload charts to Azure Blob Storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --account-key ${{ secrets.AZURE_STORAGE_KEY }} --destination ${{ secrets.AZURE_CONTAINER_NAME }} --source repo --overwrite
 
-    - name: Commit and push packaged chart to gh-pages branch
-      run: |
-        git add gh-pages/*
-        git commit -m "Update Helm chart package"
-        git push --force https://github.com/LeilaZarban/webapi-helm-charts.git HEAD:gh-pages   # Push to gh-pages branch
+    
