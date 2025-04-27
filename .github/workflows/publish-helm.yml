@@ -16,7 +16,7 @@ on:
       - main 
     paths:
        - 'charts/**'
-       - '.github/workflows/publish-helm.yaml'
+       - '.github/workflows/publish-helm.yml'
    workflow_dispatch:
 permissions:
   contents: write  # Required for pushing to gh-pages
