@@ -10,7 +10,7 @@ on:
       - main   
     paths:
        - 'charts/**'
-       - '.github/workflows/publish-helm.yaml'
+       - '.github/workflows/publish-helm.yml'
    pull_request:
     branches:
       - main 
