@@ -34,10 +34,8 @@ jobs:
     
     - name: Package the Helm chart
       run: |
-        helm package charts -d repo   
-        helm repo index repo --url https://LeilaZarban.github.io/webapi-helm-charts  
-    - run: | 
-          echo "--account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --account-key ${{ secrets.AZURE_STORAGE_KEY }} --destination ${{ secrets.AZURE_CONTAINER_NAME }}"
+        helm package charts -d repo/charts  
+        helm repo index repo/charts --url https://LeilaZarban.github.io/webapi-helm-charts  
     - name: Upload charts to Azure Blob Storage
       uses: azure/CLI@v1
       with:
