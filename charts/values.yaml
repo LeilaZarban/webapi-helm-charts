@@ -1,7 +1,8 @@
 ingress:
   enabled: true
   name: my-ingress
-  namespace: default   
+  namespace: default  
+  ingressClassName: nginx
   tls: []
   hosts: 
     - host: another.example.com
